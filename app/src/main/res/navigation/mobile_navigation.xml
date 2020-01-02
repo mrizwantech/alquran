@@ -7,15 +7,15 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.rizwantech.alquran.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:name="com.rizwantech.alquran.ui.suran_list.SurahListFragment"
+        android:label="@string/title_surah"
+        tools:layout="@layout/fragment_surahs" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.rizwantech.alquran.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:label="@string/title_juzz"
+        tools:layout="@layout/fragment_juzz" />
 
     <fragment
         android:id="@+id/navigation_notifications"
