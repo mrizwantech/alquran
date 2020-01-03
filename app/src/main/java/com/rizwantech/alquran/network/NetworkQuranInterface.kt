@@ -8,15 +8,13 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
 
-interface NetworkInterface {
+interface NetworkQuranInterface {
 
     @GET("surah")
     fun getSuraList():Deferred<SurahList>
     companion object {
-        operator fun invoke():NetworkInterface{
+        operator fun invoke():NetworkQuranInterface{
              val authInterceptor = Interceptor {chain->
                 val newUrl = chain.request().url()
                     .newBuilder()
@@ -37,7 +35,7 @@ interface NetworkInterface {
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(NetworkInterface::class.java)
+                .create(NetworkQuranInterface::class.java)
         }
     }
 }

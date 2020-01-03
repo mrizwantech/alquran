@@ -1,75 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/design_default_color_primary"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="5dp">
 
-    android:orientation="vertical"
-    android:padding="10dp">
-
-
-    <TextView
-        android:id="@+id/surah_name_english"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@android:color/holo_green_dark"
+        android:orientation="vertical"
+        android:padding="5dp">
 
-    <TextView
-        android:id="@+id/surah_name_arabic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:text="TextView"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/surah_name_english"
-        app:layout_constraintTop_toTopOf="@+id/surah_name_english" />
+        <TextView
+            android:id="@+id/surah_name_english"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/surah_name_arabic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/surah_name_english"
+            app:layout_constraintTop_toTopOf="@+id/surah_name_english" />
 
-        android:layout_marginBottom="16dp"
-        android:text="&#xFDFD;"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/surah_name_arabic"
-        app:layout_constraintTop_toTopOf="@+id/surah_name_arabic" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/bismillah"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
 
-    <TextView
-        android:id="@+id/surah_place"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/surah_name_arabic" />
 
+        <TextView
+            android:id="@+id/surah_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="0dp"
+            android:paddingLeft="0dp"
+            android:paddingEnd="10dp"
+            android:paddingRight="10dp"
+            android:text="tlkjlkj lkjlkj lkjlkjlkj"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/surah_name_english"
+            tools:layout_editor_absoluteY="43dp" />
 
-        android:text="TextView"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/surah_name_english"
-        app:layout_constraintStart_toStartOf="@+id/surah_name_english"
-        app:layout_constraintTop_toBottomOf="@+id/surah_name_english" />
+        <TextView
+            android:id="@+id/surah_meaning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="0dp"
+            android:paddingLeft="0dp"
+            android:paddingEnd="10dp"
+            android:paddingRight="10dp"
+            android:text="tlkjlkj lkjlkj lkjlkjlkj"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/surah_place"
+            app:layout_constraintTop_toBottomOf="@+id/surah_name_arabic"
+            tools:layout_editor_absoluteY="38dp" />
 
-    <TextView
-        android:id="@+id/surah_verses_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/surah_name_arabic"
-        app:layout_constraintStart_toStartOf="@+id/surah_name_arabic"
-        app:layout_constraintTop_toBottomOf="@+id/surah_name_arabic" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/surah_verses_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tlkjlkj lkjlkj lkjlkjlkj"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/surah_meaning"
+            app:layout_constraintTop_toBottomOf="@+id/surah_name_arabic"
+            tools:layout_editor_absoluteY="38dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

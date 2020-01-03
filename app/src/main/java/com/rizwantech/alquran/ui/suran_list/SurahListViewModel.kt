@@ -1,11 +1,15 @@
 package com.rizwantech.alquran.ui.suran_list
 
+import android.app.Application
+import android.content.Context
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rizwantech.alquran.alqurandata.surahnameslist.SurahDataClass
+import com.rizwantech.alquran.database.RepositorySurahList
 import com.rizwantech.alquran.database.SurahListDatabse
-import com.rizwantech.alquran.network.NetworkInterface
+import com.rizwantech.alquran.network.NetworkQuranInterface
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -14,21 +18,24 @@ import kotlinx.coroutines.withContext
 class SurahListViewModel : ViewModel() {
 
 
-    private val mutableLiveDataSurahList = MutableLiveData<List<SurahDataClass>>()
-    val surahListLiveSurahDataClass: LiveData<List<SurahDataClass>> = mutableLiveDataSurahList
+    private val isDataReceived: MutableLiveData<Boolean> = MutableLiveData()
+    private var surahListMutableList: MutableLiveData<List<SurahDataClass>> = MutableLiveData()
 
-    fun setSurahList(QuranApiService: NetworkInterface, db: SurahListDatabse?) {
+     fun saveSurahList(db: SurahListDatabse) {
+        var surahArray: List<SurahDataClass>
+        isDataReceived.value = true
+        val repo = RepositorySurahList()
+        surahArray = repo.getSurahList(db)
         GlobalScope.launch(Dispatchers.Default) {
-            val apiResponce = QuranApiService.getSuraList().await()
-
-            for (surah in apiResponce.data) {
-                db?.surahList()?.insertAll(surah)
-            }
             withContext(Dispatchers.Main) {
-                mutableLiveDataSurahList.value = apiResponce.data
-
+                surahListMutableList.value = surahArray
             }
-        }
 
+        }
     }
+
+    fun getSurahList(): LiveData<List<SurahDataClass>> {
+        return surahListMutableList
+    }
+
 }

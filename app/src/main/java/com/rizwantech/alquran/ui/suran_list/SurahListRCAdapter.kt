@@ -9,7 +9,7 @@ import com.rizwantech.alquran.R
 import com.rizwantech.alquran.alqurandata.surahnameslist.SurahDataClass
 import kotlinx.android.synthetic.main.rc_adapter_surah_list.view.*
 
-class SurahListRCAdapter(private val surahNamesList: List<SurahDataClass>) :
+class SurahListRCAdapter(private var surahNamesList: List<SurahDataClass>) :
     RecyclerView.Adapter<SurahListRCAdapter.SurahListViewHolder>() {
 
 
@@ -17,6 +17,7 @@ class SurahListRCAdapter(private val surahNamesList: List<SurahDataClass>) :
         parent: ViewGroup,
         viewType: Int
     ): SurahListViewHolder {
+
         return SurahListViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.rc_adapter_surah_list,
@@ -34,7 +35,8 @@ class SurahListRCAdapter(private val surahNamesList: List<SurahDataClass>) :
         holder.tvSurahNameEnglish.text = surahNamesList[position].englishName
         holder.tvSurahNameArabic.text = surahNamesList[position].name
         holder.tvSurahCity.text = surahNamesList[position].revelationType
-        holder.tvVersesCount.text = surahNamesList[position].englishNameTranslation
+        holder.tvVersesCount.text = surahNamesList[position].numberOfAyahs.toString()
+        holder.tvSurahMeaning.text = surahNamesList[position].englishNameTranslation
 
     }
 
@@ -42,6 +44,7 @@ class SurahListRCAdapter(private val surahNamesList: List<SurahDataClass>) :
         val tvSurahNameEnglish: TextView = v.surah_name_english
         val tvSurahNameArabic: TextView = v.surah_name_arabic
         val tvSurahCity: TextView = v.surah_place
+        var tvSurahMeaning: TextView = v.surah_meaning
         val tvVersesCount: TextView = v.surah_verses_count
 
     }
