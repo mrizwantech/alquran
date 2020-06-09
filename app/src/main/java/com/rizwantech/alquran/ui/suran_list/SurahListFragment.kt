@@ -13,8 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rizwantech.alquran.R
 import com.rizwantech.alquran.alqurandata.surahnameslist.SurahDataClass
-import com.rizwantech.alquran.database.SurahListDatabse
 import com.rizwantech.alquran.network.NetworkInterface
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class SurahListFragment : Fragment() {
@@ -30,20 +32,20 @@ class SurahListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         surahListViewModel =
-            ViewModelProvider(this). get(SurahListViewModel::class.java)
+            ViewModelProvider(this).get(SurahListViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_surahs, container, false)
-        recylerview= root.findViewById(R.id.rc_surah)
+        recylerview = root.findViewById(R.id.rc_surah)
         recylerview.setHasFixedSize(true)
-        val db= container?.context?.let { SurahListDatabse(it) };
-        surahListViewModel.
-            setSurahList(NetworkInterface(),db)
-        surahListViewModel.surahListLiveSurahDataClass.observe(viewLifecycleOwner, Observer { surahList ->
-            Log.d("SurahName", surahList[0].englishName)
-            listSurah=surahList
-            initAdapter()
-        })
-
-
+        CoroutineScope(Dispatchers.Main).launch {
+            surahListViewModel.setSurahList()
+        }
+        surahListViewModel.surahListLiveSurahDataClass.observe(
+            viewLifecycleOwner,
+            Observer { surahList ->
+                Log.d("SurahName", surahList[0].englishName)
+                listSurah = surahList
+                initAdapter()
+            })
         return root
     }
 
