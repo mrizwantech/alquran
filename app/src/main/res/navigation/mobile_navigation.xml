@@ -3,23 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_surahlist">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_surahlist"
         android:name="com.rizwantech.alquran.ui.suran_list.SurahListFragment"
         android:label="@string/title_surah"
         tools:layout="@layout/fragment_surahs" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_juzz"
         android:name="com.rizwantech.alquran.ui.dashboard.DashboardFragment"
         android:label="@string/title_juzz"
         tools:layout="@layout/fragment_juzz" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_surah"
         android:name="com.rizwantech.alquran.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_surah_signle"
+        android:name="com.rizwantech.alquran.ui.ayas.AyasFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_surah" />
 </navigation>
